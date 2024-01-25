@@ -2,7 +2,7 @@
 
 const request = require('request');
 
-//Check if the URL is a provided argument
+// Check if the URL is a provided argument
 
 if (process.argv.length !== 3) {
   console.error('Usage: node 3-starwars_title.js <movie-id>');
@@ -18,10 +18,10 @@ const apiUrl = `https://swapi-api.hbtn.io/api/films/${movieId}`;
 request(apiUrl, (error, response, body) => {
   if (error) {
     console.error(error);
-    process.exit(1); 
+    process.exit(1);
   }
 
-  if(response.statusCode === 200) { // Response was successful
+  if (response.statusCode === 200) { // Response was successful
     const movieData = JSON.parse(body);
     console.log(movieData.title);
   } else {
