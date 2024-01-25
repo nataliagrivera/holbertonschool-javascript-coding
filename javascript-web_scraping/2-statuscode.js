@@ -1,6 +1,5 @@
 #!/usr/bin/node
 
-const { error } = require('console');
 const request = require('request');
 
 // Check if the URL is provided as an argument
@@ -9,11 +8,11 @@ if(process.argv.length !== 3) {
   process.exit(1); // Exit with an error code
 }
 
-const URL = process.argv[2];
+const url = process.argv[2];
 
 // Print the status code of a GET request to the provided URL
-request(URL, (error, response)) => {
-  if (error) {
+request(url, (err, response)) => {
+  if (err) {
     console.error(error);
     process.exit(1); // Exit with an error code
   }
