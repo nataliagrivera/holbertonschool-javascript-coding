@@ -3,7 +3,7 @@
 const request = require('request');
 
 // Check if the URL is provided as an argument
-if(process.argv.length !== 3) {
+if (process.argv.length !== 3) {
   console.error('Usage: node 2-statuscode.js <URL>');
   process.exit(1); // Exit with an error code
 }
