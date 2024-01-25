@@ -17,5 +17,5 @@ request(url, (err, response) => {
     process.exit(1); // Exit with an error code
   }
 
-console.log(`code: ${response.statusCode}`);
+  console.log(`code: ${response.statusCode}`);
 });
