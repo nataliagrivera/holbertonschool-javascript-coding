@@ -25,7 +25,7 @@ request(apiUrl, (error, response, body) => {
     const movieData = JSON.parse(body);
     console.log(movieData.title);
   } else {
-    console.error('Request failed');
+    console.error(`Error: Unable to fetch movie data. ${response.StatusCode}`);
     process.exit(1);
   }
 });
