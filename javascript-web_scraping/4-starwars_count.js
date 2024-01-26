@@ -26,9 +26,9 @@ request(apiUrl, (error, response, body) => {
       }
     }
 
-  console.log(count);
-} else {
-  console.error(`Error: ${response.statusCode}`);
-  process.exit(1);
-}
+    console.log(count);
+  } else {
+    console.error(`Error: ${response.statusCode}`);
+    process.exit(1);
+  }
 });
