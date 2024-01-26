@@ -3,30 +3,29 @@
 const request = require('request');
 const fs = require('fs');
 
-if (process.argv.length !== 3) {
-  console.error('Usage: node 5-request_store.js <url>')
-  process.exit(1)
+// Check if both URL and file path are provided as command line arguments
+if (process.argv.length !== 4) {
+  console.error('Usage: node 5-request_store.js <URL> <file-path>');
+  process.exit(1);
 }
 
-const url = process.argv[2]
-const filePath = process.argv[3]
+const url = process.argv[2];
+const filePath = process.argv[3];
 
-
-// Make a request to get the specified URL
-request(filePath, (error, response, body) => {
+// Make a GET request to the specified URL
+request(url, (error, response, body) => {
   if (error) {
-    console.error(error)
-    process.exit(1)
+    console.error(`Error: ${error.message}`);
+    process.exit(1);
   }
 
-  /// The body response to the sopecified file path
-  fs.writeFile(filePath, body, 'utf8', (error) => {
-    if (error) {
-      console.error(`Error writing to ${filePath}: ${error}`)
+  // Write the body response to the specified file path
+  fs.writeFile(filePath, body, 'utf-8', (err) => {
+    if (err) {
+      console.error(`Error writing to file: ${err.message}`);
       process.exit(1);
     }
 
-  console.log(`Content sucesfully written to ${filePath}`);
-
+    console.log(`Content successfully saved to ${filePath}`);
   });
 });
