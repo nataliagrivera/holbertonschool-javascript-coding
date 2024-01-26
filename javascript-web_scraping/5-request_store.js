@@ -3,12 +3,6 @@
 const request = require('request');
 const fs = require('fs');
 
-// Check if both URL and file path are provided as command line arguments
-if (process.argv.length !== 4) {
-  console.error('Usage: node 5-request_store.js <URL> <file-path>');
-  process.exit(1);
-}
-
 const url = process.argv[2];
 const filePath = process.argv[3];
 
