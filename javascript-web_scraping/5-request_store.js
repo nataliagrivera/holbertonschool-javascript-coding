@@ -19,21 +19,14 @@ request(url, (error, response, body) => {
     process.exit(1);
   }
 
-  // Write the body response to the specified file path
-  fs.writeFile(filePath, body, 'utf-8', (err) => {
-    if (err) {
-      console.error(`Error writing to file: ${err.message}`);
-      process.exit(1);
-    }
-
-    // Read the content of the file and print it
-    fs.readFile(filePath, 'utf-8', (readErr, data) => {
-      if (readErr) {
-        console.error(`Error reading file: ${readErr.message}`);
-        process.exit(1);
-      }
-
-      console.log(data);
-    });
-  });
+  // Write the body response to the specified file path synchronously
+  try {
+    fs.writeFileSync(filePath, body, 'utf-8');
+    // Read the content of the file synchronously and print it
+    const data = fs.readFileSync(filePath, 'utf-8');
+    console.log(data);
+  } catch (err) {
+    console.error(`Error: ${err.message}`);
+    process.exit(1);
+  }
 });
