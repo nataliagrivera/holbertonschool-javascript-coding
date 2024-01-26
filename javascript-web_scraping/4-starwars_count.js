@@ -15,16 +15,16 @@ request(apiUrl, (error, response, body) => {
     process.exit(1);
   }
 
-if (response.statusCode === 200) {
-  const movies = JSON.parse(body).results;
-  let count = 0;
-  for (const movie of movies) {
-    for (const character of movie.characters) {
-      if (character.includes('18')) {
-        count++;
+  if (response.statusCode === 200) {
+    const movies = JSON.parse(body).results;
+    let count = 0;
+    for (const movie of movies) {
+      for (const character of movie.characters) {
+        if (character.includes('18')) {
+          count++;
+        }
       }
     }
-  }
 
   console.log(count);
 } else {
