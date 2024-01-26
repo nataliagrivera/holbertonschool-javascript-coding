@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const request (require('request'));
+const request = require('request');
 
 if (process.argv.length !== 3) {
   console.error('USage: nodde 4-starwars_count.js <url>');
@@ -9,7 +9,7 @@ if (process.argv.length !== 3) {
 
 const apiUrl = process.argv[2];
 
-resquest(apiUrl, (error, response, body) => {
+request(apiUrl, (error, response, body) => {
   if (error) {
     console.error(error);
     process.exit(1);
@@ -25,6 +25,7 @@ if (response.statusCode === 200) {
       }
     }
   }
+
   console.log(count);
 } else {
   console.error(`Error: ${response.statusCode}`);
