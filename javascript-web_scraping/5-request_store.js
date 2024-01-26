@@ -26,6 +26,14 @@ request(url, (error, response, body) => {
       process.exit(1);
     }
 
-    console.log(body); // Output the content of the file
+    // Read the content of the file and print it
+    fs.readFile(filePath, 'utf-8', (readErr, data) => {
+      if (readErr) {
+        console.error(`Error reading file: ${readErr.message}`);
+        process.exit(1);
+      }
+
+      console.log(data);
+    });
   });
 });
